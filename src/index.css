@@ -38,7 +38,9 @@ code {
   justify-content: center;
 }
 
-.LoginPage > .container, .RegisterPage > .container {
+.container {
+  margin-left: auto;
+  margin-right: auto;
   width: 85% !important;
 }
 
@@ -93,10 +95,14 @@ code {
 }
 
 nav {
+  background-color: #2c68da;
+  padding-top: 1rem;
+  padding-bottom: 1.125rem;
+}
+
+nav .navContainer {
   display: flex;
   justify-content: space-between;
-  background-color: #2c68da;
-  padding: 1rem 2rem 1rem 1rem;
 }
 
 nav a {
