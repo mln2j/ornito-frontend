@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import Cookies from "js-cookie";
+import RegisterPage from "./pages/RegisterPage";
+import LoginPage from "./pages/LoginPage";
+
+const HomePage = () => <h2>Dobrodošao! Uspješno prijavljen.</h2>; // Simulacija Home Page-a
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+    useEffect(() => {
+        // Provjera postoji li token u cookiesima prilikom učitavanja aplikacije
+        const token = Cookies.get("auth_token");
+
+        // Ako postoji token, postavi stanje na autentifikovano
+        if (token) {
+            setIsAuthenticated(true);
+        }
+    }, []); // Ovaj useEffect se poziva samo jednom prilikom inicijalnog rendera
+
+    return (
+        <Router>
+            <Routes>
+                {/* Ako je korisnik prijavljen, ide na HomePage, inače na Login */}
+                <Route path="/" element={isAuthenticated ? <HomePage /> : <Navigate to="/login" />} />
+                <Route path="/register" element={<RegisterPage />} />
+                <Route path="/login" element={<LoginPage setIsAuthenticated={setIsAuthenticated} />} />
+            </Routes>
+        </Router>
+    );
 }
 
 export default App;
