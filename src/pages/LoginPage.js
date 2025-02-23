@@ -24,7 +24,7 @@ function LoginPage({ setIsAuthenticated }) {
     return (
         <div className="LoginPage">
             <div className="container">
-                <h2>Login</h2>
+                <h2>Prijava</h2>
                 <div className="formWrapper">
                     <form onSubmit={handleSubmit}>
                         <input
@@ -47,8 +47,6 @@ function LoginPage({ setIsAuthenticated }) {
                         <br/>
                         <button type="submit">Prijavi se</button> {/* Dugme za prijavu */}
                     </form>
-
-                    {/* Uvijek prikazuje link za registraciju */}
                     <p>
                         Nemate račun? <Link to="/register">Registrirajte se ovde</Link>
                     </p>
