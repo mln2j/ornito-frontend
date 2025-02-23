@@ -124,3 +124,16 @@ nav .navLinks {
   align-items: center;
   gap: 1.5rem;
 }
+
+fieldset {
+  border-radius: 5px;
+  border: 1px solid #2c68da;
+}
+
+fieldset:not(:first-of-type) {
+  margin-top: 1rem;
+}
+
+fieldset > p {
+  margin: 0;
+}
