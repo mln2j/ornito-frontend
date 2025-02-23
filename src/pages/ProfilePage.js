@@ -69,7 +69,7 @@ const ProfilePage = () => {
                 ))}
             </fieldset>
             <fieldset className="history">
-                <legend>Povijest</legend>
+                <legend>Skenirano voće</legend>
                 {history.map((historyItem) => (
                     <div className="historyItem" key={historyItem.id}>
                         <p>{historyItem.fruitName}[{historyItem.varietyName}]</p>
