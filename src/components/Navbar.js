@@ -10,7 +10,7 @@ const Navbar = ({isAuthenticated, logout}) => {
                         Ornito
                     </NavLink>
                     <NavLink
-                        to="/profil"
+                        to="/profile"
                     >
                         Profil
                     </NavLink>

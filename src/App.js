@@ -5,6 +5,7 @@ import { jwtDecode } from "jwt-decode";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
+import ProfilePage from "./pages/ProfilePage";
 import Navbar from "./components/Navbar"; // Import Navbar
 
 function App() {
@@ -55,6 +56,7 @@ function App() {
             <Routes>
                 {/* Ako je korisnik prijavljen, ide na HomePage, inače na Login */}
                 <Route path="/" element={isAuthenticated ? <HomePage /> : <Navigate to="/login" />} />
+                <Route path="/profile" element={isAuthenticated ? <ProfilePage /> : <Navigate to="/login" />} />
                 <Route path="/register" element={isAuthenticated ? <Navigate to="/" /> : <RegisterPage />} />
                 <Route path="/login" element={isAuthenticated ? <Navigate to="/" /> : <LoginPage setIsAuthenticated={setIsAuthenticated} />} />
             </Routes>
