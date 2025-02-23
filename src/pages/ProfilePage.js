@@ -62,15 +62,20 @@ const ProfilePage = () => {
             <fieldset className="achievements">
                 <legend>Postignuća</legend>
                 {achievements.map((achievement) => (
-                    <p key={achievement.id}>{achievement.achievementName}</p>
+                    <div className="achievement" key={achievement.id}>
+                        <p>{achievement.achievementName}</p>
+                        <small>{achievement.description}</small>
+                    </div>
                 ))}
             </fieldset>
             <fieldset className="history">
                 <legend>Povijest</legend>
                 {history.map((historyItem) => (
-                    <p key={historyItem.id}>
-                        {historyItem.fruitName} - {historyItem.varietyName}: {historyItem.description}
-                    </p>
+                    <div className="historyItem" key={historyItem.id}>
+                        <p>{historyItem.fruitName}[{historyItem.varietyName}]</p>
+                        <small>{historyItem.description}</small>
+                    </div>
+
                 ))}
             </fieldset>
         </div>

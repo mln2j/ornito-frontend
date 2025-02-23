@@ -7,10 +7,11 @@ const Navbar = ({isAuthenticated, logout}) => {
             <div className="container navContainer">
                 <div className="navLinks">
                     <NavLink className="frontPageLink" to="/">
-                        Ornito
+                        Fructo
                     </NavLink>
                     <NavLink
                         to="/profile"
+                        className={({ isActive }) => (isActive ? "active-link" : undefined)}
                     >
                         Profil
                     </NavLink>

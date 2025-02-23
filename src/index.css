@@ -75,7 +75,7 @@ code {
   border: 1px solid #6f83aa;
   outline: none;
   font-size: 16px;
-  padding: 4px 3px;
+  padding: 7px 5px;
   margin: 0 0 5px;
 }
 
@@ -88,7 +88,7 @@ code {
   border: 1px solid #1b428a;
   outline: none;
   font-size: .875rem;
-  padding: 5px;
+  padding: 10px;
   color: #fff;
   margin: 10px 0 5px;
   cursor: pointer;
@@ -125,6 +125,26 @@ nav .navLinks {
   gap: 1.5rem;
 }
 
+nav .navLinks a.active-link {
+  position: relative;
+}
+
+nav .navLinks a:after {
+  overflow: hidden;
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  background-color: white;
+  transition: .3s;
+  height: 0;
+}
+
+nav .navLinks a.active-link:after {
+  height: 2px;
+}
+
 fieldset {
   border-radius: 5px;
   border: 1px solid #2c68da;
@@ -134,6 +154,15 @@ fieldset:not(:first-of-type) {
   margin-top: 1rem;
 }
 
-fieldset > p {
+fieldset > p,
+.achievement > p,
+.historyItem > p
+{
   margin: 0;
+}
+
+.achievement:not(:first-of-type) > p,
+.historyItem:not(:first-of-type) > p
+{
+  margin-top: .75rem;
 }
