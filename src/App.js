@@ -4,8 +4,7 @@ import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
-
-const HomePage = () => <h2>Dobrodošao! Uspješno prijavljen.</h2>; // Simulacija Home Page-a
+import HomePage from "./pages/HomePage"; // Import HomePage iz nove datoteke
 
 function App() {
     const [isAuthenticated, setIsAuthenticated] = useState(null); // Početna vrijednost je null
