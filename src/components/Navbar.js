@@ -5,11 +5,17 @@ const Navbar = ({isAuthenticated, logout}) => {
     return (
         <nav>
             <div className="container navContainer">
-                <NavLink
-                    to="/"
-                >
-                    Ornito
-                </NavLink>
+                <div className="navLinks">
+                    <NavLink className="frontPageLink" to="/">
+                        Ornito
+                    </NavLink>
+                    <NavLink
+                        to="/profil"
+                    >
+                        Profil
+                    </NavLink>
+                </div>
+
 
                 {isAuthenticated && (
                     <a href="/login" onClick={logout}>Odjava</a>
