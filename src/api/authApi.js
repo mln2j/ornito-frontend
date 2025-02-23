@@ -54,13 +54,21 @@ export const getAuthToken = () => {
 // Registracija funkcija
 export const register = async (userData) => {
     try {
+        // Pošaljite sve podatke potrebne za registraciju
         const response = await axios.post(`${API_URL}/register`, {
+            firstName: userData.firstname,
+            lastName: userData.lastname,
+            email: userData.email,
+            phoneNumber: userData.phone,
             username: userData.username,
             password: userData.password
         });
 
-        return response.data; // Potvrda o uspješnoj registraciji
+        return response.data; // Vraća podatke sa servera nakon uspješne registracije
+        login(userData);
     } catch (error) {
+        console.error("Greška pri registraciji:", error.response?.data || error.message);
         throw new Error("Greška pri registraciji");
     }
 };
+

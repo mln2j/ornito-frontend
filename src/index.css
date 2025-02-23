@@ -28,7 +28,7 @@ code {
     monospace;
 }
 
-.LoginPage {
+.LoginPage, .RegisterPage {
   margin: 0 auto;
   width: 100dvw;
   height: 100dvh;
@@ -38,18 +38,18 @@ code {
   justify-content: center;
 }
 
-.LoginPage > .container {
+.LoginPage > .container, .RegisterPage > .container {
   width: 85% !important;
 }
 
-.LoginPage > .container > h2 {
+.LoginPage > .container > h2, .RegisterPage > .container > h2 {
   padding-left: 1rem;
   font-weight: 600;
   padding-bottom: 0;
   margin-bottom: 0.25rem;
 }
 
-.LoginPage > .container > .formWrapper {
+.LoginPage > .container > .formWrapper, .RegisterPage > .container > .formWrapper {
   padding: 1rem 0.75rem 1.125rem;
   border-radius: 7px;
   background-color: #c0d1f3;
@@ -59,11 +59,14 @@ code {
   flex-direction: column;
 }
 
-.LoginPage > .container > .formWrapper > form {
+.LoginPage > .container > .formWrapper > form,
+.RegisterPage > .container > .formWrapper > form{
   overflow: hidden;
 }
 
-.LoginPage > .container > .formWrapper > form > input {
+.LoginPage > .container > .formWrapper > form > input,
+.RegisterPage > .container > .formWrapper > form > input
+{
   border-radius: 4px;
   width: 100%;
   background-color: #fcfcfc;
@@ -74,7 +77,9 @@ code {
   margin: 0 0 5px;
 }
 
-.LoginPage > .container > .formWrapper > form > button {
+.LoginPage > .container > .formWrapper > form > button,
+.RegisterPage > .container > .formWrapper > form > button
+{
   border-radius: 4px;
   width: 100%;
   background-color: #2c68da;
