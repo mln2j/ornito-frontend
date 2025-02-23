@@ -1,23 +1,50 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 
 const HomePage = () => <h2>Dobrodošao! Uspješno prijavljen.</h2>; // Simulacija Home Page-a
 
 function App() {
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [isAuthenticated, setIsAuthenticated] = useState(null); // Početna vrijednost je null
+
+    const checkToken = () => {
+        const token = Cookies.get("auth_token");
+        console.log("Provjera tokena:", token);
+
+        if (!token) {
+            setIsAuthenticated(false);
+            return;
+        }
+
+        try {
+            const decoded = jwtDecode(token); // Dekodiramo JWT
+            const currentTime = Date.now() / 1000; // Trenutno vrijeme u sekundama
+            if (decoded.exp && decoded.exp > currentTime) {
+                setIsAuthenticated(true); // Token je valjan
+            } else {
+                console.warn("Token je istekao.");
+                setIsAuthenticated(false);
+                Cookies.remove("auth_token"); // Uklanjamo token ako je istekao
+            }
+        } catch (error) {
+            console.error("Greška pri dekodiranju tokena:", error.message);
+            setIsAuthenticated(false);
+        }
+    };
 
     useEffect(() => {
-        // Provjera postoji li token u cookiesima prilikom učitavanja aplikacije
-        const token = Cookies.get("auth_token");
+        checkToken(); // Provjera tokena prilikom učitavanja aplikacije
+    }, []);
 
-        // Ako postoji token, postavi stanje na autentifikovano
-        if (token) {
-            setIsAuthenticated(true);
-        }
-    }, []); // Ovaj useEffect se poziva samo jednom prilikom inicijalnog rendera
+    console.log("Trenutno stanje autentifikacije:", isAuthenticated);
+
+    if (isAuthenticated === null) {
+        // Prikaz loadera dok se stanje ne postavi
+        return <div>Učitavanje...</div>;
+    }
 
     return (
         <Router>
