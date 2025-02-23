@@ -4,14 +4,14 @@ import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
-import HomePage from "./pages/HomePage"; // Import HomePage iz nove datoteke
+import HomePage from "./pages/HomePage";
+import Navbar from "./components/Navbar"; // Import Navbar
 
 function App() {
     const [isAuthenticated, setIsAuthenticated] = useState(null); // Početna vrijednost je null
 
     const checkToken = () => {
         const token = Cookies.get("auth_token");
-        console.log("Provjera tokena:", token);
 
         if (!token) {
             setIsAuthenticated(false);
@@ -34,11 +34,15 @@ function App() {
         }
     };
 
+    const logout = () => {
+        Cookies.remove("auth_token");
+        setIsAuthenticated(false);
+    };
+
     useEffect(() => {
         checkToken(); // Provjera tokena prilikom učitavanja aplikacije
     }, []);
 
-    console.log("Trenutno stanje autentifikacije:", isAuthenticated);
 
     if (isAuthenticated === null) {
         // Prikaz loadera dok se stanje ne postavi
@@ -47,6 +51,7 @@ function App() {
 
     return (
         <Router>
+            {isAuthenticated && <Navbar isAuthenticated={isAuthenticated} logout={logout} />}
             <Routes>
                 {/* Ako je korisnik prijavljen, ide na HomePage, inače na Login */}
                 <Route path="/" element={isAuthenticated ? <HomePage /> : <Navigate to="/login" />} />
