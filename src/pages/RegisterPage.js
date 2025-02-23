@@ -21,16 +21,15 @@ const RegisterPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            // Pozivamo funkciju za registraciju
-            const response = await register(userData);
-            alert("Registracija uspješna!");
-            console.log(response);
-            navigate("/login"); // Nakon uspješne registracije, preusmjeravamo na login stranicu
+            const response = await register(userData); // Pozivamo funkciju za registraciju i automatski login
+            alert("Registracija uspješna");
+            navigate("/"); // Preusmjeravanje na početnu stranicu nakon uspješnog logina
         } catch (error) {
-            console.error("Greška pri registraciji", error);
+            console.error("Greška pri registraciji:", error.message);
             alert("Došlo je do greške pri registraciji.");
         }
     };
+
 
     return (
         <div className="RegisterPage">
