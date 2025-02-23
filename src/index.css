@@ -191,3 +191,64 @@ fieldset > p,
 a {
   color: #228B22;
 }
+
+.controls {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.controls > a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: #9bc69b;
+  border-radius: 7px;
+  aspect-ratio: 3/2;
+}
+
+.controls > a > *{
+  position: absolute;
+}
+
+.controls > a.scanLink {
+  background-color: rgba(255, 157, 38, 0.75);
+  border: 2px solid #ff9d26;
+}
+
+.controls > a.profileLink {
+  background-color: rgba(255, 215, 0, 0.65);
+  border: 2px solid #f1c900;
+}
+
+.controls > a.scanLink > div > p {
+  text-align: center;
+  color: #974609;
+  margin: 0;
+  font-size: 5rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  line-height: 0.85;
+}
+
+.controls > a.profileLink > div > p {
+  text-align: center;
+  color: #8e6803;
+  margin: 0;
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  line-height: 0.9;
+}
+
+.controls > a.scanLink > div > p:last-child {
+  font-weight: 500;
+}
+
+.controls > a.profileLink > div > p:first-child {
+  font-size: 5.5rem;
+}
+
+
