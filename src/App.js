@@ -51,8 +51,8 @@ function App() {
             <Routes>
                 {/* Ako je korisnik prijavljen, ide na HomePage, inače na Login */}
                 <Route path="/" element={isAuthenticated ? <HomePage /> : <Navigate to="/login" />} />
-                <Route path="/register" element={<RegisterPage />} />
-                <Route path="/login" element={<LoginPage setIsAuthenticated={setIsAuthenticated} />} />
+                <Route path="/register" element={isAuthenticated ? <Navigate to="/" /> : <RegisterPage />} />
+                <Route path="/login" element={isAuthenticated ? <Navigate to="/" /> : <LoginPage setIsAuthenticated={setIsAuthenticated} />} />
             </Routes>
         </Router>
     );
