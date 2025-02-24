@@ -28,8 +28,8 @@ export const login = async (credentials) => {
         const token = response.data.token;
         localStorage.setItem("token", token);
 
-        // Spremi token u cookie na 1 dan
-        Cookies.set("auth_token", token, { expires: 1 });
+        // Spremi token u cookie na 2 tjedna
+        Cookies.set("auth_token", token, { expires: 14 });
 
         window.scrollTo(0, 0); // Resetiraj scroll na vrh
         return response.data; // Vraća podatke sa servera (npr. token)
