@@ -20,7 +20,7 @@ const HomePage = () => {
 
     return (
         <div className="container">
-            <h2>Pozdrav {username}!</h2>
+            <h1>Pozdrav {username}!</h1>
             <div className="controls">
                 <Link to="/scan" className="scanLink">
                     <div>

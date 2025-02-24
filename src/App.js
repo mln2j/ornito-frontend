@@ -6,7 +6,8 @@ import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
 import ProfilePage from "./pages/ProfilePage";
-import Navbar from "./components/Navbar"; // Import Navbar
+import Navbar from "./components/Navbar";
+import ScanPage from "./pages/ScanPage"; // Import Navbar
 
 function App() {
     const [isAuthenticated, setIsAuthenticated] = useState(null); // Početna vrijednost je null
@@ -56,6 +57,7 @@ function App() {
             <Routes>
                 {/* Ako je korisnik prijavljen, ide na HomePage, inače na Login */}
                 <Route path="/" element={isAuthenticated ? <HomePage /> : <Navigate to="/login" />} />
+                <Route path="/scan" element={isAuthenticated ? <ScanPage /> : <Navigate to="/login" />} />
                 <Route path="/profile" element={isAuthenticated ? <ProfilePage /> : <Navigate to="/login" />} />
                 <Route path="/register" element={isAuthenticated ? <Navigate to="/" /> : <RegisterPage />} />
                 <Route path="/login" element={isAuthenticated ? <Navigate to="/" /> : <LoginPage setIsAuthenticated={setIsAuthenticated} />} />
